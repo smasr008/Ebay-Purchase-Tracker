@@ -1,24 +1,20 @@
-//  Search.swift
-//  Ebay Purchase Tracker
-//
-//  Created by Avery Robbins on 7/10/24.
-//
 import Foundation
 import SwiftUI
 
-
 // Model representing a search
-struct Search: Identifiable, Hashable {
-    let id = UUID()
+struct Search: Identifiable {
+    var id: UUID? = nil
     var saveSearch: Bool = false
     var maxPrice: Float?
     var minPrice: Float?
     var earliestDate: Date?
     var latestDate: Date?
-    var nameIncludes: String
+    var nameIncludes: String = ""
     var searchDescriptions: Bool = false
-    var hasArrived: Bool = false
+    var hasArrived: Bool? // Optional Bool
+    var specifyPurchaseDates: Bool = false
     var savedName: String?
+    
     
     // Function to filter auctions based on search criteria
     func matches(auction: Auction) -> Bool {
@@ -43,6 +39,7 @@ struct Search: Identifiable, Hashable {
         if hasArrived != auction.hasArrived {
             return false
         }
+        
         return true
     }
     
