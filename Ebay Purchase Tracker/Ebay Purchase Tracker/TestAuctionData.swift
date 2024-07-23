@@ -9,15 +9,6 @@ struct Auction: Identifiable, Hashable {
     let date: String
     let hasArrived: Bool
     let descriptions: String
-    
-    init(price: Float, itemName: String, sellerName: String, date: String, hasArrived: Bool, descriptions: String) {
-        self.price = price
-        self.itemName = itemName
-        self.sellerName = sellerName
-        self.date = date
-        self.hasArrived = hasArrived
-        self.descriptions = descriptions
-    }
 }
 
 // Class to provide test data for auctions
