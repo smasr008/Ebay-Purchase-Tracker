@@ -19,22 +19,14 @@ Ebay Purchase Tracker is an app that allows users to log in with their eBay acco
 - **Search**: Provide search functionality to find specific purchases.
 - **Filters**: Filters to sort purchases by date, price, category, or seller.
 
-### Purchase History Graphs
-- **Visualize History**: Visualize purchase history over time with graphs and charts.
-- **Spending Trends**: Show spending trends and categories where most money is spent.
 
 ### Wishlist Integration
 - **Add to Wishlist**: Allow users to add items to a wishlist directly from their purchase history.
 - **Wishlist Notifications**: Notify users when items from their wishlist go on sale.
 
-### Recommendations
+### Recommendations (future implementation)
 - **Related Items**: Display recommendations based on recent purchases using eBay’s recommendation APIs.
 - **Complementary Items**: Show related or complementary items.
-
-### Push Notifications
-- **Shipping Updates**: Notify users about shipping updates.
-- **Price Drops**: Notify users about price drops on similar items.
-- **Seller Promotions**: Notify users about seller promotions.
 
 ## Technical Implementation
 
