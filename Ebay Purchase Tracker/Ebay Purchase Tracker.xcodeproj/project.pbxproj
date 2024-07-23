@@ -11,6 +11,8 @@
 		F41C5EC52C4C459900BE4D04 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41C5EC42C4C459900BE4D04 /* ContentView.swift */; };
 		F41C5EC72C4C459A00BE4D04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41C5EC62C4C459A00BE4D04 /* Assets.xcassets */; };
 		F41C5ECA2C4C459A00BE4D04 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F41C5EC92C4C459A00BE4D04 /* Preview Assets.xcassets */; };
+		F46C21222C4EFA98007387DA /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C21212C4EFA98007387DA /* Search.swift */; };
+		F46C21242C4F3D8C007387DA /* TestAuctionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C21232C4F3D8C007387DA /* TestAuctionData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		F41C5EC42C4C459900BE4D04 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F41C5EC62C4C459A00BE4D04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F41C5EC92C4C459A00BE4D04 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F46C21212C4EFA98007387DA /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		F46C21232C4F3D8C007387DA /* TestAuctionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAuctionData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +55,12 @@
 		F41C5EC12C4C459900BE4D04 /* Ebay Purchase Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				F46C21232C4F3D8C007387DA /* TestAuctionData.swift */,
 				F41C5EC22C4C459900BE4D04 /* Ebay_Purchase_TrackerApp.swift */,
-				F41C5EC42C4C459900BE4D04 /* ContentView.swift */,
 				F41C5EC62C4C459A00BE4D04 /* Assets.xcassets */,
+				F41C5EC42C4C459900BE4D04 /* ContentView.swift */,
 				F41C5EC82C4C459A00BE4D04 /* Preview Content */,
+				F46C21212C4EFA98007387DA /* Search.swift */,
 			);
 			path = "Ebay Purchase Tracker";
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F46C21222C4EFA98007387DA /* Search.swift in Sources */,
+				F46C21242C4F3D8C007387DA /* TestAuctionData.swift in Sources */,
 				F41C5EC52C4C459900BE4D04 /* ContentView.swift in Sources */,
 				F41C5EC32C4C459900BE4D04 /* Ebay_Purchase_TrackerApp.swift in Sources */,
 			);
