@@ -11,7 +11,7 @@ struct Search: Identifiable {
     var latestDate: Date?
     var nameIncludes: String = ""
     var searchDescriptions: Bool = false
-    var hasArrived: Bool? // Optional Bool
+    var hasArrived: Bool? = nil// Optional Bool
     var specifyPurchaseDates: Bool = false
     var savedName: String?
     
@@ -33,8 +33,14 @@ struct Search: Identifiable {
         }
         
         
+        if let hasArrived = hasArrived {
+            if auction.hasArrived != hasArrived {
+                return false
+           }
+       }
+        
+        
         // Name Includes Check (case-insensitive)
-
         let nameIncludesLowercased = nameIncludes.lowercased()
         if !nameIncludes.isEmpty {
             let nameMatches = auction.itemName.lowercased().contains(nameIncludesLowercased)
@@ -46,16 +52,6 @@ struct Search: Identifiable {
                 return false
             }
         }
-        
-        
-        
-        
-        
-        
-        if hasArrived != auction.hasArrived {
-            return false
-        }
-        
         return true
     }
     
