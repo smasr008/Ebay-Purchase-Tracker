@@ -7,6 +7,7 @@ struct SearchView: View {
     @State private var searchResults: [Auction] = []
     @State private var testAuctions: [Auction] = TestAuctionData.generateTestAuctions()
     @State private var selectedSearchID: UUID? = nil
+    @State private var hasSearched: Bool = false
 
     var body: some View {
         VStack {
@@ -34,26 +35,17 @@ struct SearchView: View {
                 
                 Section(header: Text("Name and Keywords")) {
                     TextField("Name Includes:", text: $newSearch.nameIncludes)
-                    if !newSearch.nameIncludes.isEmpty {
-                        Toggle("Search Descriptions?", isOn: $newSearch.searchDescriptions)
-                    }
+                    Toggle("Search Descriptions?", isOn: $newSearch.searchDescriptions)
                 }
                 
-                Section(header: Text("Delivery")) {
-                    Toggle("Has Arrived", isOn: Binding(
-                        get: { newSearch.hasArrived ?? false },
-                        set: { newSearch.hasArrived = $0 ? true : nil }
-                    ))
-                }
+               
                 
                 Button(action: {
-                    print("Running search with parameters: \(newSearch)")
-                    
                     searchResults = testAuctions.filter { auction in
                         newSearch.matches(auction: auction)
                     }
                     
-                    print("Search results: \(searchResults)")
+                    hasSearched = true
                     
                     newSearch = Search()
                     customSavedName = ""
@@ -69,6 +61,7 @@ struct SearchView: View {
                 Button(action: {
                     newSearch = Search()
                     customSavedName = ""
+                    hasSearched = false
                 }) {
                     Text("Clear Search")
                         .foregroundColor(.blue)
@@ -88,29 +81,33 @@ struct SearchView: View {
                         }
                     }
                 }
-            } // end of Form
+            }
             
-            if !searchResults.isEmpty {
-                List {
-                    ForEach(searchResults) { auction in
-                        VStack(alignment: .leading) {
-                            Text("Item Name: \(auction.itemName)")
-                            Text("Price: \(auction.price, specifier: "%.2f")")
-                            Text("Seller: \(auction.sellerName)")
-                            Text("Date: \(auction.date)")
-                            Text("Has Arrived: \(auction.hasArrived ? "Yes" : "No")")
-                            Text("Description: \(auction.descriptions)")
+            if hasSearched {
+                if searchResults.isEmpty {
+                    Text("Sorry, no auctions matched your search criteria.")
+                        .foregroundColor(.gray)
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                } else {
+                    List {
+                        ForEach(searchResults) { auction in
+                            VStack(alignment: .leading) {
+                                Text("Item Name: \(auction.itemName)")
+                                Text("Price: \(auction.price, specifier: "%.2f")")
+                                Text("Seller: \(auction.sellerName)")
+                                Text("Date: \(auction.date)")
+                                Text("Has Arrived: \(auction.hasArrived ? "Yes" : "No")")
+                                Text("Description: \(auction.descriptions)")
+                            }
                         }
                     }
-                } // end of List
+                }
             }
-        } // end of VStack
-        .navigationTitle("Search")
-        .onAppear {
-            print("SearchView appeared")
         }
-    } // end of body
-} // end of SearchView
+        .navigationTitle("Search")
+    }
+}
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {

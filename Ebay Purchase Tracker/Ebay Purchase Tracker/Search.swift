@@ -18,6 +18,7 @@ struct Search: Identifiable {
     
     // Function to filter auctions based on search criteria
     func matches(auction: Auction) -> Bool {
+
         if let maxPrice = maxPrice, auction.price > maxPrice {
             return false
         }
@@ -30,12 +31,27 @@ struct Search: Identifiable {
         if let latestDate = latestDate, let auctionDate = dateFormatter.date(from: auction.date), auctionDate > latestDate {
             return false
         }
-        if !nameIncludes.isEmpty && !auction.itemName.localizedCaseInsensitiveContains(nameIncludes) {
-            return false
+        
+        
+        // Name Includes Check (case-insensitive)
+
+        let nameIncludesLowercased = nameIncludes.lowercased()
+        if !nameIncludes.isEmpty {
+            let nameMatches = auction.itemName.lowercased().contains(nameIncludesLowercased)
+            
+            // Check if descriptions search is enabled and name search is not
+            if searchDescriptions && !nameMatches {
+                return(auction.descriptions.lowercased().contains(nameIncludesLowercased))
+            } else if !searchDescriptions && !nameMatches {
+                return false
+            }
         }
-        if searchDescriptions && !auction.descriptions.localizedCaseInsensitiveContains(nameIncludes) {
-            return false
-        }
+        
+        
+        
+        
+        
+        
         if hasArrived != auction.hasArrived {
             return false
         }
