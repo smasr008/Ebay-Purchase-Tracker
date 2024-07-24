@@ -2,16 +2,14 @@
 //  ContentView.swift
 //  WishlistFeature
 //
-
-import SwiftUI
-
 import SwiftUI
 
 struct ContentView: View {
     @State private var items = [
-        Item(name: "Item 1", imageName: "item1", isLiked: false),
-        Item(name: "Item 2", imageName: "item2", isLiked: false),
-        Item(name: "Item 3", imageName: "item3", isLiked: false)
+        Item(name: "Gold necklace", imageName: "item1", price: 89.99, isLiked: false),
+        Item(name: "Bear toy", imageName: "item2", price: 19.99, isLiked: false),
+        Item(name: "T shirt pink", imageName: "item3", price: 39.99, isLiked: false),
+        Item(name: "Rocking chair", imageName: "item4", price: 239.99, isLiked: false)
     ]
 
     var body: some View {
@@ -26,8 +24,14 @@ struct ContentView: View {
                                 .frame(width: 50, height: 50)
                                 .clipShape(RoundedRectangle(cornerRadius: 8))
                             
-                            Text(item.name)
-                                .padding(.leading, 10)
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(String(format: "$%.2f", item.price))
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(.leading, 10)
                             
                             Spacer()
                             
