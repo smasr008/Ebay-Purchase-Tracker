@@ -2,8 +2,6 @@
 //  WishlistView.swift
 //  WishlistFeature
 //
-//
-import SwiftUI
 import SwiftUI
 
 struct WishlistView: View {
@@ -19,8 +17,14 @@ struct WishlistView: View {
                         .frame(width: 50, height: 50)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                     
-                    Text(item.name)
-                        .padding(.leading, 10)
+                    VStack(alignment: .leading) {
+                        Text(item.name)
+                            .font(.headline)
+                        Text(String(format: "$%.2f", item.price))
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.leading, 10)
                 }
             }
         }
@@ -31,9 +35,10 @@ struct WishlistView: View {
 struct WishlistView_Previews: PreviewProvider {
     static var previews: some View {
         WishlistView(items: [
-            Item(name: "Item 1", imageName: "item1", isLiked: true),
-            Item(name: "Item 2", imageName: "item2", isLiked: false),
-            Item(name: "Item 3", imageName: "item3", isLiked: true)
+            Item(name: "Gold necklace", imageName: "item1", price: 89.99, isLiked: true),
+            Item(name: "Bear toy", imageName: "item2", price: 19.99, isLiked: false),
+            Item(name: "Tshirt pink", imageName: "item3", price: 39.99, isLiked: true),
+            Item(name: "Rocking chair", imageName: "item4", price: 39.99, isLiked: false)
         ])
     }
 }
